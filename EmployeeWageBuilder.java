@@ -17,10 +17,8 @@ public class EmployeeWageBuilder
 		this.maxHrsPerMonth=maxHrsPerMonth;
 	}
 
-	public static void main (String args[])
+	public int calculateEmployeeWageForCompany()
 	{
-		EmployeeWageBuilder dMart = new EmployeeWageBuilder("DMart", 20, 2, 10);
-
 		//Variables
 		int empHrs = 0;
 		int empWage = 0;
@@ -30,7 +28,7 @@ public class EmployeeWageBuilder
 		int dailyWage=0;
 
 		//Computation
-		while ( totalEmpHrs <= dMart.maxHrsPerMonth && totalWorkingDays < dMart.numOfWorkingDays )
+		while ( totalEmpHrs <= maxHrsPerMonth && totalWorkingDays < numOfWorkingDays )
 		{
 			totalWorkingDays++;
 			int empCheck = (int) Math.floor((Math.random() * 10) %2);
@@ -47,10 +45,21 @@ public class EmployeeWageBuilder
 			}
 
 			//Calculating Emp wage
-			dailyWage = empHrs * dMart.empRatePerHr;
+			dailyWage = empHrs * empRatePerHr;
 			totalEmpWage += dailyWage;
-			System.out.println("Company :"+dMart.company+" Work_Days :"+totalWorkingDays+" Daily_Wage :"+dailyWage);
-		}
-		System.out.println(dMart.company+" Total_Emp_Wage :"+totalEmpWage);
+			System.out.println("Company :"+company+" Work_Days :"+totalWorkingDays+" Daily_Wage :"+dailyWage);
+		 }
+		System.out.println(company+" Total_Emp_Wage :"+totalEmpWage);
+		return totalEmpWage;
+	 }
+
+	public static void main(String args[])
+	{
+		EmployeeWageBuilder dMart = new EmployeeWageBuilder("DMart",20,5,10);
+		EmployeeWageBuilder bigBasket = new EmployeeWageBuilder("BigBasket",40,5,10);
+
+		dMart.calculateEmployeeWageForCompany();
+		System.out.println("");
+		bigBasket.calculateEmployeeWageForCompany();
 	}
 }
