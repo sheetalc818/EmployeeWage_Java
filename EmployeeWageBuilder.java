@@ -1,8 +1,9 @@
+import java.util.*;
 public class EmployeeWageBuilder
 {
 	//Constants
 	public static final int IS_FULL_TIME = 0;
-   public static final int IS_PART_TIME = 1;
+        public static final int IS_PART_TIME = 1;
 
 	private final String company;
 	private final int empRatePerHr;
@@ -49,21 +50,24 @@ public class EmployeeWageBuilder
 			totalEmpWage += dailyWage;
 			System.out.println("Company :"+company+" Work_Days :"+totalWorkingDays+" Daily_Wage :"+dailyWage);
 		 }
-		//System.out.println(company+" Total_Emp_Wage :"+totalEmpWage);
+		System.out.println(company+" Total_Emp_Wage :"+totalEmpWage);
 		return totalEmpWage;
 	 }
 
 	public static void main(String args[])
 	{
-		EmployeeWageBuilder[] company = new EmployeeWageBuilder[2];
+		ArrayList<EmployeeWageBuilder> companyData=new ArrayList<EmployeeWageBuilder>();
 
-		company[0]=new EmployeeWageBuilder("Dmart",20,2,10);
-		System.out.println(company[0].company+" Total_Emp_Wage :"+company[0].calculateEmployeeWageForCompany());
+		EmployeeWageBuilder company1= new EmployeeWageBuilder("DMart",20,2,10);
+		EmployeeWageBuilder company2= new EmployeeWageBuilder("Bridgelabz",40,2,10);
 
-		System.out.println("");
+		companyData.add(company1);
+		companyData.add(company2);
 
-		company[1]=new EmployeeWageBuilder("Bridgelabz",40,2,10);
-      System.out.println(company[1].company+" Total_Emp_Wage :"+company[1].calculateEmployeeWageForCompany());
-
-	}
+		for (EmployeeWageBuilder data : companyData)
+      {
+         data.calculateEmployeeWageForCompany();
+			System.out.println("");
+      }
+   }
 }
