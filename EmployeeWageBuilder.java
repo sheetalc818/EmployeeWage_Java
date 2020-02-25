@@ -4,30 +4,36 @@ public class EmployeeWageBuilder
 	public static final int IS_FULL_TIME = 0;
    public static final int IS_PART_TIME = 1;
    public static final int EMP_RATE_PER_HR = 20;
+	public static final int NUMBER_OF_DAYS=20;
 
 	public static void main(String args[])
 	{
 		//Variables
 		int empHrs = 0;
 		int empWage = 0;
+		int totalEmpWage = 0;
 
 		//Computation
-		int empCheck =(int) Math.floor((Math.random() * 10) %2);
-
-		switch(empCheck)
+		for ( int day=1; day<=NUMBER_OF_DAYS; day++)
 		{
-			case IS_FULL_TIME :
+			int empCheck =(int) Math.floor((Math.random() * 10) %2);
+			switch(empCheck)
+			{
+				case IS_FULL_TIME :
 					empHrs = 8;
 					break;
-			case IS_PART_TIME :
+				case IS_PART_TIME :
 					empHrs = 4;
 					break;
-			default :
+				default :
 					empHrs = 0;
-		}
+			}
 
-		//Calculating Emp wage
-		empWage = empHrs * EMP_RATE_PER_HR;
-		System.out.println("Employee wage :"+empWage);
+			//Calculating Emp wage
+			empWage = empHrs * EMP_RATE_PER_HR;
+			totalEmpWage += empWage;
+			System.out.println("Employee wage :"+empWage);
+		}
+		System.out.println("Total Emp wage:"+totalEmpWage);
 	}
 }
