@@ -49,17 +49,21 @@ public class EmployeeWageBuilder
 			totalEmpWage += dailyWage;
 			System.out.println("Company :"+company+" Work_Days :"+totalWorkingDays+" Daily_Wage :"+dailyWage);
 		 }
-		System.out.println(company+" Total_Emp_Wage :"+totalEmpWage);
+		//System.out.println(company+" Total_Emp_Wage :"+totalEmpWage);
 		return totalEmpWage;
 	 }
 
 	public static void main(String args[])
 	{
-		EmployeeWageBuilder dMart = new EmployeeWageBuilder("DMart",20,5,10);
-		EmployeeWageBuilder bigBasket = new EmployeeWageBuilder("BigBasket",40,5,10);
+		EmployeeWageBuilder[] company = new EmployeeWageBuilder[2];
 
-		dMart.calculateEmployeeWageForCompany();
+		company[0]=new EmployeeWageBuilder("Dmart",20,2,10);
+		System.out.println(company[0].company+" Total_Emp_Wage :"+company[0].calculateEmployeeWageForCompany());
+
 		System.out.println("");
-		bigBasket.calculateEmployeeWageForCompany();
+
+		company[1]=new EmployeeWageBuilder("Bridgelabz",40,2,10);
+      System.out.println(company[1].company+" Total_Emp_Wage :"+company[1].calculateEmployeeWageForCompany());
+
 	}
 }
