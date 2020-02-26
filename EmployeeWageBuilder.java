@@ -34,8 +34,8 @@ class EmployeeWageBuilder
    }
 
    public void calculateEmployeeWageForCompany() 
-	{
-		//Variables
+   {
+      //Variables
       int empHrs = 0;
 
       int empWage = 0;
@@ -45,15 +45,15 @@ class EmployeeWageBuilder
       int dailyWage = 0;
 
       for (i = 0; i < companyWage.size(); i++) 
-		{
+      {
       	//Computation
          while (totalEmpHrs <= companyWage.get(i).maxHrsPerMonth && totalWorkingDays < companyWage.get(i).numOfWorkingDays) 
-			{
-         	totalWorkingDays++;
+         {
+            totalWorkingDays++;
             int empCheck = (int) Math.floor((Math.random() * 10) % 2);
 
-	 			switch (empCheck) 
-				{
+	    switch (empCheck) 
+	    {
                case IS_FULL_TIME:
                         empHrs = 8;
                         break;
@@ -64,7 +64,7 @@ class EmployeeWageBuilder
                         empHrs = 0;
             }
 
-	    		//Calculating Emp wage
+	    //Calculating Emp wage
             dailyWage = empHrs * companyWage.get(i).empRatePerHr;
             totalEmpWage += dailyWage;
             System.out.println("Company :" + companyWage.get(i).company + " Work_Days :" + totalWorkingDays + " Daily_Wage :" + dailyWage);
@@ -73,31 +73,35 @@ class EmployeeWageBuilder
        	System.out.println("");
        	hm.put(companyWage.get(i).company, totalEmpWage);
      	}
-     	System.out.println("COMPANY TOTAL_WAGE");
-     	for (Map.Entry m : hm.entrySet()) {
-    	System.out.println(m.getKey() + " " + m.getValue());
-    }
-		String companyName="Dmart";
+     	
+	System.out.println("COMPANY TOTAL_WAGE");
+     	for (Map.Entry m : hm.entrySet()) 
+	{
+    	   System.out.println(m.getKey() + " " + m.getValue());
+        }
+	String companyName="Dmart";
     	getTotalWageByCompany(companyName,hm);
- 	}
+    }
 
- 	public void getTotalWageByCompany(String companyName, Map<String,Integer> hm)
- 	{
-   	for (Map.Entry m : hm.entrySet()) {
-   	if (m.getKey() == companyName){
+    public void getTotalWageByCompany(String companyName, Map<String,Integer> hm)
+    {
+   	for (Map.Entry m : hm.entrySet()) 
+	{
+   	    if (m.getKey() == companyName)
+	    {
 		System.out.println("");	
-   	System.out.println("Total_Wage :"+m.getValue());
+   		System.out.println("Total_Wage :"+m.getValue());
+	    }
 	}
-	}
-	}
+    }
 
- 	public static void main(String args[])
- 	{
+    public static void main(String args[])
+    {
    	EmployeeWageBuilder empWage = new EmployeeWageBuilder();
    	empWage.addCompany("Dmart",20,2,10);
    	empWage.addCompany("Reliance",20,4,10);
 
    	empWage.calculateEmployeeWageForCompany();
- 	}
+    }
 }
 
